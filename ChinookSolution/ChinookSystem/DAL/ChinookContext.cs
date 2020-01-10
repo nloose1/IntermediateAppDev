@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChinookSystem.DAL
 {
-    class Dummy
+    class ChinookContext
     {
     }
 }
