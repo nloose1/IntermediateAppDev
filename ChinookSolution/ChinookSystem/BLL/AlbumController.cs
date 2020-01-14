@@ -32,5 +32,13 @@ namespace ChinookSystem.BLL
                 return context.Albums.Find(albumid);
             }
         }
+
+        public List<Album> Album_FindByArtist(int artistid)
+        {
+            using(var context = new ChinookContext())
+            {
+
+            }
+        }
     }
 }
