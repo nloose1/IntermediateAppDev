@@ -8,12 +8,15 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using ChinookSystem.Data.Entities;
 using ChinookSystem.DAL;
+using System.ComponentModel; //ODS
 #endregion
 
 namespace ChinookSystem.BLL
 {
+    [DataObject]
     public class AlbumController
     {
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
         //basic query: complete list of dbSet
         public List<Album> Album_List()
         {
@@ -24,6 +27,8 @@ namespace ChinookSystem.BLL
                 return context.Albums.ToList();
             }
         }
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         //basic query: return a record based on pkey
         public Album Album_FindByID(int albumid)
         {
@@ -33,11 +38,27 @@ namespace ChinookSystem.BLL
             }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Album> Album_FindByArtist(int artistid)
         {
             using(var context = new ChinookContext())
             {
+                var results = from albumrow in context.Albums
+                              where albumrow.ArtistId == artistid
+                              select albumrow;
+                return results.ToList();
+            }
+        }
 
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Album> Album_FindByTitle(string title)
+        {
+            using (var context = new ChinookContext())
+            {
+                var results = from albumrow in context.Albums
+                              where albumrow.Title.Contains(title)
+                              select albumrow;
+                return results.ToList();
             }
         }
     }

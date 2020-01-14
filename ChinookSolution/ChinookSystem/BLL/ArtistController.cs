@@ -8,12 +8,15 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using ChinookSystem.Data.Entities;
 using ChinookSystem.DAL;
+using System.ComponentModel; //ODS
 #endregion
 
 namespace ChinookSystem.BLL
 {
+    [DataObject]
     public class ArtistController
     {
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         //basic query: complete list of dbSet
         public List<Artist> Artist_List()
         {
@@ -24,6 +27,7 @@ namespace ChinookSystem.BLL
                 return context.Artists.ToList();
             }
         }
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         //basic query: return a record based on pkey
         public Artist Artist_FindByID(int artistid)
         {
