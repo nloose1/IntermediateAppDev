@@ -71,13 +71,13 @@
                         </LoggedInTemplate>
                     </asp:LoginView>
                     <asp:Menu ID="navMenu" runat="server" 
-                    BackColor="#000000" BorderColor="Red"
+                    BackColor="#222222" BorderColor="Red"
                     StaticMenuItemStyle-ForeColor="#999999" 
                     StaticMenuItemStyle-VerticalPadding="10px"
                     StaticMenuItemStyle-HorizontalPadding="10px"
                     RenderingMode="List" Orientation="Horizontal" 
                     DynamicMenuItemStyle-ForeColor="#999999" 
-                    DynamicMenuStyle-BackColor="Black">
+                    DynamicMenuStyle-BackColor="blue">
                     <Items>
                         <asp:MenuItem Text="Home" NavigateUrl="~/"></asp:MenuItem>
 
