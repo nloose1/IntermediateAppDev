@@ -10,9 +10,13 @@
     <br />
     <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
     <br />
-    <asp:ListView ID="AlbumList" runat="server"></asp:ListView>
+    <asp:ListView ID="AlbumList" runat="server" DataSourceID="AlbumListODS"></asp:ListView>
 
-    <asp:ObjectDataSource ID="AlbumLostODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Album_List" TypeName="ChinookSystem.BLL.AlbumController" DataObjectTypeName="ChinookSystem.Data.Entities.Album" DeleteMethod="Album_Delete" InsertMethod="Album_Add" UpdateMethod="Album_Update"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="AlbumListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Album_List" TypeName="ChinookSystem.BLL.AlbumController" DataObjectTypeName="ChinookSystem.Data.Entities.Album" 
+        DeleteMethod="Album_Delete" 
+        InsertMethod="Album_Add" 
+        UpdateMethod="Album_Update">
+    </asp:ObjectDataSource>
 
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Artist_List" TypeName="ChinookSystem.BLL.ArtistController"></asp:ObjectDataSource>
     

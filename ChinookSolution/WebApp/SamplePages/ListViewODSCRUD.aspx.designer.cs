@@ -31,13 +31,13 @@ namespace WebApp.SamplePages {
         protected global::System.Web.UI.WebControls.ListView AlbumList;
         
         /// <summary>
-        /// AlbumLostODS control.
+        /// AlbumListODS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource AlbumLostODS;
+        protected global::System.Web.UI.WebControls.ObjectDataSource AlbumListODS;
         
         /// <summary>
         /// ObjectDataSource1 control.
