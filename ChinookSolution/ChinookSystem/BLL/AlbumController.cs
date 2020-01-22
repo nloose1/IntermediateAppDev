@@ -13,6 +13,11 @@ using DMIT2018Common.UserControls;
 #endregion
 
 namespace ChinookSystem.BLL
+    //LinQ query sintax
+        //From X in entity dataset
+        //Where conditions
+        //Select X {;} or Select new className{ propertyname = X.propery,
+        //                                      propertyname = X.parentnavproperty.property}
 {
     [DataObject]
     public class AlbumController
