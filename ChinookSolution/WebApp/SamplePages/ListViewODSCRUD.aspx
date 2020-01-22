@@ -10,7 +10,7 @@
     <br />
     <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
     <asp:ValidationSummary ID="ValidationSummaryE" runat="server" HeaderText="Correct the following concerns for the edited data" ValidationGroup="EGroup"/>
-    <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Correct the following concerns for the inserted data"
+    <asp:ValidationSummary ID="ValidationSummaryI" runat="server" HeaderText="Correct the following concerns for the inserted data"
         ValidationGroup="IGroup"/>
     <br />
     <%-- ODS CRUD requires an ODS with CRUD methods indicated
@@ -62,7 +62,7 @@
             </tr>
         </AlternatingItemTemplate>
         <EditItemTemplate>
-            <asp:RequiredFieldValidator ID="RequiredTitleTextBoxE" runat="server" ErrorMessage="Title is required" Display="None" ControlToValidate="TitleTextBoxE" ValidationGroup="EGroup"></asp:RequiredFieldValidator>
+            <%--<asp:RequiredFieldValidator ID="RequiredTitleTextBoxE" runat="server" ErrorMessage="Title is required" Display="None" ControlToValidate="TitleTextBoxE" ValidationGroup="EGroup"></asp:RequiredFieldValidator>--%>
             <asp:RegularExpressionValidator ID="RegExTitleE" runat="server" ErrorMessage="Title is limited to 160 characters" Display="None" ControlToValidate="TitleTextBoxE" ValidationExpression="^.{1,160}$" ValidationGroup="EGroup"></asp:RegularExpressionValidator>
             <asp:RegularExpressionValidator ID="RegExReleaseLabelE" runat="server" ErrorMessage="Release Label is limited to 160 characters" Display="None" ControlToValidate="ReleaseLabelTextBoxE" ValidationExpression="^.{1,50}$" ValidationGroup="EGroup"></asp:RegularExpressionValidator>
 
