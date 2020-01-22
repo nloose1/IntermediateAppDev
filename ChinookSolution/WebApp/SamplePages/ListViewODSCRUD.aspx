@@ -140,7 +140,7 @@
                     </td>
                 </tr>
                 <tr runat="server">
-                    <td runat="server" style="text-align: center; background-color: #5D7B9D; font-family: Verdana, Arial, Helvetica, sans-serif; color: red">
+                    <td runat="server" style="text-align: center; background-color: #c0c0c0c0; font-family: Verdana, Arial, Helvetica, sans-serif; color: black">
                         <asp:DataPager runat="server" ID="DataPager1">
                             <Fields>
                                 <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False"></asp:NextPreviousPagerField>
@@ -177,9 +177,14 @@
     <asp:ObjectDataSource ID="AlbumListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Album_List" TypeName="ChinookSystem.BLL.AlbumController" DataObjectTypeName="ChinookSystem.Data.Entities.Album" 
         DeleteMethod="Album_Delete" 
         InsertMethod="Album_Add" 
-        UpdateMethod="Album_Update">
+        UpdateMethod="Album_Update"
+        OnDeleted="DeleteCheckForException"
+        OnInserted="InsertCheckForException"
+        OnUpdated="UpdateCheckForException"
+        OnSelected="SelectCheckForException">
     </asp:ObjectDataSource>
 
-    <asp:ObjectDataSource ID="ArtistListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Artist_List" TypeName="ChinookSystem.BLL.ArtistController"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ArtistListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Artist_List" TypeName="ChinookSystem.BLL.ArtistController"
+        OnSelected="SelectCheckForException"></asp:ObjectDataSource>
     
 </asp:Content>
