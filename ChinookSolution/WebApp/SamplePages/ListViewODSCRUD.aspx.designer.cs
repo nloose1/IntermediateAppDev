@@ -22,6 +22,24 @@ namespace WebApp.SamplePages {
         protected global::DMIT2018Common.UserControls.MessageUserControl MessageUserControl;
         
         /// <summary>
+        /// ValidationSummaryE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummaryE;
+        
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        
+        /// <summary>
         /// AlbumList control.
         /// </summary>
         /// <remarks>
