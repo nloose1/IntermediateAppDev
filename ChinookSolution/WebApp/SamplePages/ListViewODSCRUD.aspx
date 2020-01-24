@@ -90,30 +90,49 @@
                 </tr>
             </table>
         </EmptyDataTemplate>
-        <InsertItemTemplate>
-            <asp:RequiredFieldValidator ID="RequiredTitleTextBoxI" runat="server" ErrorMessage="Title is required" Display="None" ControlToValidate="TitleTextBoxI" ValidationGroup="IGroup"></asp:RequiredFieldValidator>
-
-            <asp:RegularExpressionValidator ID="RegExTitleI" runat="server" ErrorMessage="Title is limited to 160 characters" Display="None" ControlToValidate="TitleTextBoxI" ValidationExpression="^.{1,160}$" ValidationGroup="IGroup"></asp:RegularExpressionValidator>
-
-            <asp:RegularExpressionValidator ID="RegExReleaseLabelI" runat="server" ErrorMessage="Release Label is limited to 160 characters" Display="None" ControlToValidate="ReleaseLabelTextBoxI" ValidationExpression="^.{1,50}$" ValidationGroup="IGroup"></asp:RegularExpressionValidator>
-
+         <InsertItemTemplate>
+            <asp:RequiredFieldValidator ID="RequiredTitleTextBoxI" runat="server" 
+                ErrorMessage="Title is required" Display="None"
+                 ControlToValidate="TitleTextBoxI" ValidationGroup="IGroup">
+            </asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="RegExTitleTextBoxI" runat="server" 
+                ErrorMessage="Title is limited to 160 characters" Display="None"
+                 ControlToValidate="TitleTextBoxI" ValidationGroup="IGroup"
+                  ValidationExpression="^.{1,160}$">
+            </asp:RegularExpressionValidator>
+            <asp:RegularExpressionValidator ID="ReExReleaseLabelTextBoxI" runat="server" 
+                ErrorMessage="Label is limited to 50 characters" Display="None"
+                 ControlToValidate="ReleaseLabelTextBoxI" ValidationGroup="IGroup"
+                  ValidationExpression="^.{0,50}$">
+            </asp:RegularExpressionValidator>
             <tr style="">
                 <td>
-                    <asp:Button runat="server" CommandName="Insert" Text="Insert" ID="InsertButton" ValidationGroup="Igroup" />
+                    <asp:Button runat="server" CommandName="Insert" Text="Insert" 
+                        ID="InsertButton"  ValidationGroup="IGroup"/>
                     <asp:Button runat="server" CommandName="Cancel" Text="Clear" ID="CancelButton" />
                 </td>
                 <td>
-                    <asp:TextBox Text='<%# Bind("AlbumId") %>' runat="server" ID="AlbumIdTextBox" Enabled="false" Width="50px"/></td>
+                    <asp:TextBox Text='<%# Bind("AlbumId") %>' runat="server" ID="AlbumIdTextBox" 
+                         Enabled="false" Width="50px"/></td>
                 <td>
-                    <asp:TextBox Text='<%# Bind("Title") %>' runat="server" ID="TitleTextBoxI" Width="350px"/></td>
+                    <asp:TextBox Text='<%# Bind("Title") %>' runat="server" 
+                        ID="TitleTextBoxI" Width="350px"/></td>
                 <td>
-                    <asp:DropDownList ID="ArtistListInsert" runat="server" DataSourceID="ArtistListODS" DataTextField="Name" DataValueField="ArtistId" SelectedValue='<%# Bind("ArtistId") %>' Width="250px" AppendDataBoundItems="true">
-                        <asp:ListItem Value="0">Select...</asp:ListItem>
+                    <asp:DropDownList ID="ArtistList" runat="server" 
+                        DataSourceID="ArtistListODS" 
+                        DataTextField="Name" 
+                        DataValueField="ArtistId"
+                        selectedvalue='<%# Bind("ArtistId") %>'
+                        Width="300px">
                     </asp:DropDownList>
+
+                </td>
                 <td>
-                    <asp:TextBox Text='<%# Bind("ReleaseYear") %>' runat="server" ID="ReleaseYearTextBox" Width="50px"/></td>
+                    <asp:TextBox Text='<%# Bind("ReleaseYear") %>' 
+                        runat="server" ID="ReleaseYearTextBox" Width="50px"/></td>
                 <td>
                     <asp:TextBox Text='<%# Bind("ReleaseLabel") %>' runat="server" ID="ReleaseLabelTextBoxI" /></td>
+               
             </tr>
         </InsertItemTemplate>
         <ItemTemplate>

@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApp.SamplePages {
-    
-    
-    public partial class ListViewODSCRUD {
-        
+namespace WebApp.SamplePages
+{
+
+
+    public partial class ListViewODSCRUD
+    {
+
         /// <summary>
         /// MessageUserControl control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace WebApp.SamplePages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DMIT2018Common.UserControls.MessageUserControl MessageUserControl;
-        
+
         /// <summary>
         /// ValidationSummaryE control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace WebApp.SamplePages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummaryE;
-        
+
         /// <summary>
         /// ValidationSummaryI control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace WebApp.SamplePages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummaryI;
-        
+
         /// <summary>
         /// AlbumList control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace WebApp.SamplePages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView AlbumList;
-        
+
         /// <summary>
         /// AlbumListODS control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace WebApp.SamplePages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource AlbumListODS;
-        
+
         /// <summary>
         /// ArtistListODS control.
         /// </summary>
