@@ -10,6 +10,7 @@ using ChinookSystem.Data.Entities;
 using ChinookSystem.DAL;
 using System.ComponentModel; //ODS
 using DMIT2018Common.UserControls;
+using ChinookSystem.Data.POCOs;
 #endregion
 
 namespace ChinookSystem.BLL
@@ -69,6 +70,25 @@ namespace ChinookSystem.BLL
                 return results.ToList();
             }
         }
+
+        //have to use the POCO  class for the list
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<AlbumArtists> Album_AlbumArtists()
+        {
+            using (var context = new ChinookContext())
+            {
+                var results = from x in context.Albums
+                              select new AlbumArtists
+                              {
+                                  AlbumTitle = x.Title,
+                                  Year = x.ReleaseYear,
+                                  //goes into x which is album and then into the navigational property Artist and then get the field Name
+                                  ArtistName = x.Artist.Name
+                              };
+                return results.ToList();
+            }
+        }
+
         #endregion
 
         #region Add, Update, Delete

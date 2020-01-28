@@ -55,7 +55,7 @@
     <Compile Include="DTOs\Dummy.cs" />
     <Compile Include="Entities\Album.cs" />
     <Compile Include="Entities\Artist.cs" />
-    <Compile Include="POCOs\Dummy.cs" />
+    <Compile Include="POCOs\AlbumArtist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
