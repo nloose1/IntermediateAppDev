@@ -4,41 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-#region Aditional namespaces
-using System.Data.Entity;
+#region Additional Namespaces
 using ChinookSystem.Data.Entities;
 using ChinookSystem.DAL;
 using System.ComponentModel; //ODS
-using DMIT2018Common.UserControls;
+using DMIT2018Common.UserControls;  //used by error handle user control
 using ChinookSystem.Data.POCOs;
 #endregion
 
 namespace ChinookSystem.BLL
-    //LinQ query sintax
-        //From X in entity dataset
-        //Where conditions
-        //Select X {;} or Select new className{ propertyname = X.propery,
-        //                                      propertyname = X.parentnavproperty.property}
 {
     [DataObject]
     public class AlbumController
     {
+        //private data member to use with error handle messages
         private List<string> reasons = new List<string>();
+
         #region Queries
         [DataObjectMethod(DataObjectMethodType.Select,false)]
-        //basic query: complete list of dbSet
+        //basic query: complete list of DbSet
         public List<Album> Album_List()
         {
-            //setup the code block to ensure the release of the sql connection
+            //set up the code block to ensure the release of the sql connection
             using (var context = new ChinookContext())
             {
                 //.ToList<T> is used to convert the DbSet<T> into a List<T> collection
                 return context.Albums.ToList();
             }
+
         }
 
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        //basic query: return a record based on pkey
+        //basic query: return a recorded based on pkey
         public Album Album_FindByID(int albumid)
         {
             using (var context = new ChinookContext())
@@ -50,7 +47,7 @@ namespace ChinookSystem.BLL
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Album> Album_FindByArtist(int artistid)
         {
-            using(var context = new ChinookContext())
+            using (var context = new ChinookContext())
             {
                 var results = from albumrow in context.Albums
                               where albumrow.ArtistId == artistid
@@ -71,7 +68,6 @@ namespace ChinookSystem.BLL
             }
         }
 
-        //have to use the POCO  class for the list
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<AlbumArtists> Album_AlbumArtists()
         {
@@ -82,7 +78,6 @@ namespace ChinookSystem.BLL
                               {
                                   AlbumTitle = x.Title,
                                   Year = x.ReleaseYear,
-                                  //goes into x which is album and then into the navigational property Artist and then get the field Name
                                   ArtistName = x.Artist.Name
                               };
                 return results.ToList();
@@ -91,8 +86,8 @@ namespace ChinookSystem.BLL
 
         #endregion
 
-        #region Add, Update, Delete
-        [DataObjectMethod(DataObjectMethodType.Insert,false)]
+        #region Add, Update and Delete
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
         public int Album_Add(Album item)
         {
             using (var context = new ChinookContext())
@@ -100,10 +95,12 @@ namespace ChinookSystem.BLL
                 if (CheckReleaseYear(item))
                 {
                     //any additional logic
-                    item.ReleaseLabel = string.IsNullOrEmpty(item.ReleaseLabel) ? null : item.ReleaseLabel;
-                    context.Albums.Add(item); //staging
-                    context.SaveChanges(); //Commit to database
-                    return item.AlbumId; //return the new identity value of the pkey
+                    item.ReleaseLabel = string.IsNullOrEmpty(item.ReleaseLabel) ? null :
+                        item.ReleaseLabel;
+
+                    context.Albums.Add(item);   //staging
+                    context.SaveChanges();      //commit to database
+                    return item.AlbumId;        //return the new identity value of the pkey
                 }
                 else
                 {
@@ -120,12 +117,11 @@ namespace ChinookSystem.BLL
                 if (CheckReleaseYear(item))
                 {
                     //any additional logic
-                    item.ReleaseLabel = string.IsNullOrEmpty(item.ReleaseLabel) ? null : item.ReleaseLabel;
+                    item.ReleaseLabel = string.IsNullOrEmpty(item.ReleaseLabel) ? null :
+                        item.ReleaseLabel;
 
-                    context.Entry(item).State = System.Data.Entity.EntityState.Modified; //staging
-                    return context.SaveChanges(); //Commit to database
-
-
+                    context.Entry(item).State = System.Data.Entity.EntityState.Modified;   //staging
+                    return context.SaveChanges();      //commit to database
                 }
                 else
                 {
@@ -139,6 +135,7 @@ namespace ChinookSystem.BLL
         {
             return Album_Delete(item.AlbumId);
         }
+
         public int Album_Delete(int albumid)
         {
             using (var context = new ChinookContext())
@@ -150,27 +147,26 @@ namespace ChinookSystem.BLL
             }
         }
         #endregion
-
-        #region support Methods
+        #region Support Methods
         private bool CheckReleaseYear(Album item)
         {
             bool isValid = true;
             int releaseyear;
-            if(string.IsNullOrEmpty(item.ReleaseYear.ToString()))
+            if (string.IsNullOrEmpty(item.ReleaseYear.ToString()))
             {
-
                 isValid = false;
                 reasons.Add("Release year is required");
             }
-            else if(!int.TryParse(item.ReleaseYear.ToString(), out releaseyear))
+            else if(!int.TryParse(item.ReleaseYear.ToString(),out releaseyear))
             {
                 isValid = false;
-                reasons.Add("Release year is not a numeric year(YYYY)");
+                reasons.Add("Release year is not a numeric year (yyyy)");
             }
             else if (releaseyear <1950 || releaseyear > DateTime.Today.Year)
             {
                 isValid = false;
-                reasons.Add(string.Format("Release year of {0} invalid. Year must be between 1950 and today", releaseyear));
+                reasons.Add(string.Format("Release year of {0} invalid. Year must be between 1950 and today",
+                    releaseyear));
             }
             return isValid;
         }

@@ -13,13 +13,13 @@ namespace WebApp.SamplePages {
     public partial class ODSReview {
         
         /// <summary>
-        /// Label2 control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
         /// AlbumTitleArg control.

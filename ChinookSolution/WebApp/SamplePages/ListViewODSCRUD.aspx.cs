@@ -18,36 +18,33 @@ namespace WebApp.SamplePages
         {
             MessageUserControl.HandleDataBoundException(e);
         }
-
         protected void InsertCheckForException(object sender, ObjectDataSourceStatusEventArgs e)
         {
-            if(e.Exception == null)
+            if (e.Exception == null)
             {
-                MessageUserControl.ShowInfo("Success", "Album has been added");
+                MessageUserControl.ShowInfo("Success", "Album has been added.");
             }
             else
             {
                 MessageUserControl.HandleDataBoundException(e);
             }
         }
-
         protected void UpdateCheckForException(object sender, ObjectDataSourceStatusEventArgs e)
         {
             if (e.Exception == null)
             {
-                MessageUserControl.ShowInfo("Success", "Album has been updated");
+                MessageUserControl.ShowInfo("Success", "Album has been updated.");
             }
             else
             {
                 MessageUserControl.HandleDataBoundException(e);
             }
         }
-
         protected void DeleteCheckForException(object sender, ObjectDataSourceStatusEventArgs e)
         {
             if (e.Exception == null)
             {
-                MessageUserControl.ShowInfo("Success", "Album has been removed");
+                MessageUserControl.ShowInfo("Success", "Album has been removed.");
             }
             else
             {
