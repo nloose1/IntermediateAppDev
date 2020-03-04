@@ -54,6 +54,7 @@
             <asp:Label ID="TracksBy" runat="server" ></asp:Label>&nbsp;&nbsp;
             <asp:Label ID="SearchArg" runat="server" ></asp:Label>
         </asp:Panel><br />
+
         <asp:ListView ID="TracksSelectionList" runat="server"
             OnItemCommand="TracksSelectionList_ItemCommand"
             DataSourceID="TracksSelectionListODS">
@@ -201,7 +202,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Name">
                     <ItemTemplate>
-                        <asp:Label runat="server" ID="TrachName"
+                        <asp:Label runat="server" ID="TrackName"
                             Text='<%# Eval("TrackName") %>'></asp:Label>
                           &nbsp;&nbsp;
                     </ItemTemplate>

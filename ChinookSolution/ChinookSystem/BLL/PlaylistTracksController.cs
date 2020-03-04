@@ -21,19 +21,65 @@ namespace ChinookSystem.BLL
         {
             using (var context = new ChinookContext())
             {
-               
-                //code to go here
-
-                return null;
+                List<UserPlaylistTrack> results = (from x in context.PlaylistTracks
+                                                  where x.Playlist.Name.Equals(playlistname)
+                                                  && x.Playlist.UserName.Equals(username)
+                                                  orderby x.TrackNumber
+                                                  select new UserPlaylistTrack
+                                                  {
+                                                      TrackID = x.TrackId,
+                                                      TrackNumber = x.TrackNumber,
+                                                      TrackName = x.Track.Name,
+                                                      Milliseconds = x.Track.Milliseconds,
+                                                      UnitPrice = x.Track.UnitPrice
+                                                  }).ToList();
+                return results;
             }
         }//eom
         public void Add_TrackToPLaylist(string playlistname, string username, int trackid)
         {
             using (var context = new ChinookContext())
             {
-                //code to go here
-                
-             
+                //trx
+                //query the playlist table to see if the playlist name exists
+                //if not
+                //  create an instance of playlist 
+                //  load 
+                //  add
+                //  set tracknumber to 1
+                //if yes
+                //  query PlayListTrack fro track id 
+                //  if found
+                //      Yes:Throw an error
+                //      No: Increment track number
+                // Create an instance of PlayListTrack
+                //load
+                //add
+                //save changes
+                int tracknumber = 0;
+                PlaylistTrack newtrack = null;
+                Playlist exists = (from x in context.Playlists
+                                  where x.Name.Equals(playlistname)
+                                  && x.UserName.Equals(username)
+                                  select x).FirstOrDefault();
+                if (exists == null)
+                {
+                    //new playlist
+                    exists = new Playlist();
+                    exists.Name = playlistname;
+                    exists.UserName = username;
+                    context.Playlists.Add(exists);
+                    tracknumber = 1;
+                }
+                else
+                {
+                    //playlist exists
+                    newtrack = (from x in context.PlaylistTracks
+                                where x.Playlist.Name.Equals(playlistname) 
+                                && x.Playlist.UserName.Equals(username)
+                                && x.TrackId == trackid
+                                select x).FirstOrDefault();
+                }
             }
         }//eom
         public void MoveTrack(string username, string playlistname, int trackid, int tracknumber, string direction)
